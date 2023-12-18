@@ -12,6 +12,7 @@ using Proiect1.BLL.Interfaces;
 using Proiect1.BLL.Helpers;
 using Proiect1.BLL.Repositories;
 using System.Threading.Tasks;
+using Proiect1.Services.Interfaces;
 
 namespace Proiect1;
 
@@ -48,6 +49,9 @@ public class Startup
 
         services.AddTransient<IUserRepository, UserRepository>();
         services.AddTransient<IUserManager, UserManager>();
+
+        services.AddTransient<IBookRepository, BookRepository>();
+        services.AddTransient<IBookManager, BookManager>();
 
         services.AddSwagger();
 
