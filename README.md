@@ -1,2 +1,2 @@
-# Proiect-ASSM
-Implementarea proiectului de la cursul de ASSM.
+# Proiect-AMSS
+Implementarea proiectului de la cursul de AMSS.
