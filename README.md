@@ -1,2 +1,5 @@
-# Proiect-AMSS
-Implementarea proiectului de la cursul de AMSS.
+# AMSS project
+---------------
+* Master: Software Engineering 
+* Year: 1 
+* Course: AMSS
