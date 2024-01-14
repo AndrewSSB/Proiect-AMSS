@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proiect1.Infrastructure.Entities
+namespace Proiect1.Services.DTOs.Meet
 {
-    public class Agenda
+    public class AgendaDTO
     {
-        public int Id { get; set; }
-        public Meeting? Meeting { get; set; }
         public int? MeetingId { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }

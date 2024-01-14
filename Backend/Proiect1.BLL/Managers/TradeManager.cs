@@ -1,6 +1,7 @@
 ﻿using Proiect1.BLL.Interfaces;
 using Proiect1.Infrastructure.Entities;
-using Proiect1.Services.Interfaces;
+using Proiect1.Services.Interfaces.Meet.Manager;
+using Proiect1.Services.Interfaces.Meet.Repo;
 using Proiect1.Services.Models.MeetModels;
 using System;
 using System.Collections.Generic;

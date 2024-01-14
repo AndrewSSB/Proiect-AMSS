@@ -9,9 +9,9 @@ namespace Proiect1.Infrastructure.Entities
 {
     public class UserMeeting
     {
-        public int UserId { get; set; }
-        public int MeetingId { get; set; }
-        public User User { get; set; }
-        public Meeting Meeting { get; set; }
+        public int? UserId { get; set; }
+        public int? MeetingId { get; set; }
+        public User? User { get; set; }
+        public Meeting? Meeting { get; set; }
     }
 }

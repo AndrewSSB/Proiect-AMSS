@@ -9,7 +9,12 @@ namespace Proiect1.Services.Models.MeetModels
 {
     public class AgendaModel
     {
+
         public int Id { get; set; }
         public int MeetingId { get; set; }
+        public string Description { get; set; }
+        public DateTime Date { get; set; }
+        public bool acceptedUser1 { get; set; }
+        public bool acceptedUser2 { get; set; }
     }
 }

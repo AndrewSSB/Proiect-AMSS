@@ -10,10 +10,10 @@ namespace Proiect1.Infrastructure.Entities
     public class Trade
     {
         public int TradeId { get; set; }
-        public int UserId { get; set; }
-        public User User { get; set; }
-        public int MeetingId { get; set; }
-        public Meeting Meeting { get; set; }
+        public int? UserId { get; set; }
+        public User? User { get; set; }
+        public int? MeetingId { get; set; }
+        public Meeting? Meeting { get; set; }
         public virtual ICollection<UserTrade> UserTrades { get; set; }
 
         public bool acceptedUser1 { get; set; }

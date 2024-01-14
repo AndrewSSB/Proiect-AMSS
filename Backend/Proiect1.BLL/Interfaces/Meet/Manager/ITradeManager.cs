@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proiect1.Services.Interfaces
+namespace Proiect1.Services.Interfaces.Meet.Manager
 {
     public interface ITradeManager
     {

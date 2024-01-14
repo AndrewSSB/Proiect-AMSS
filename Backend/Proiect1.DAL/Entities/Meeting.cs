@@ -11,9 +11,9 @@ namespace Proiect1.Infrastructure.Entities
     {
         public int MeetingId { get; set; }
         public virtual ICollection<UserMeeting> UserMeetings { get; set; }
-        public int AgendaId { get; set; }
-        public Agenda Agenda { get; set; }
-        public int TradeId { get; set; }
-        public Trade Trade { get; set; }
+        public int? AgendaId { get; set; }
+        public Agenda? Agenda { get; set; }
+        public int? TradeId { get; set; }
+        public Trade? Trade { get; set; }
     }
 }
