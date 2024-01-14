@@ -1,22 +1,18 @@
 ﻿using Proiect1.DAL.Entities;
+using Proiect1.Infrastructure.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proiect1.Infrastructure.Entities
+namespace Proiect1.Services.DTOs.Meet
 {
-    public class Trade
+    public class TradeDTO
     {
-        public int TradeId { get; set; }
         public int? UserById { get; set; }
-        public User? UserBy { get; set; }
         public int? UserForId { get; set; }
-        public User? UserFor { get; set; }
         public int? MeetingId { get; set; }
-        public Meeting? Meeting { get; set; }
-        public virtual ICollection<UserTrade> UserTrades { get; set; }
 
         public bool acceptedUser1 { get; set; }
         public bool acceptedUser2 { get; set; }

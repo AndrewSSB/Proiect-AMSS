@@ -38,12 +38,18 @@ public class AppDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim
             .HasForeignKey<Meeting>(t => t.MeetingId);
 
         modelBuilder.Entity<UserTrade>()
-            .HasKey(ut => new { ut.UserId, ut.TradeId });
+            .HasKey(ut => new { ut.UserById, ut.UserForId, ut.TradeId });
 
         modelBuilder.Entity<UserTrade>()
-            .HasOne(ut => ut.User)
-            .WithMany(u => u.UserTrades)
-            .HasForeignKey(ut => ut.UserId)
+            .HasOne(ut => ut.UserBy)
+            .WithMany(u => u.UserByTrades)
+            .HasForeignKey(ut => ut.UserById)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<UserTrade>()
+            .HasOne(ut => ut.UserFor)
+            .WithMany(u => u.UserForTrades)
+            .HasForeignKey(ut => ut.UserForId)
             .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<UserTrade>()
