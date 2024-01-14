@@ -37,24 +37,34 @@ public class AppDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim
             .WithOne(m => m.Trade)
             .HasForeignKey<Meeting>(t => t.MeetingId);
 
-        modelBuilder.Entity<User>()
-            .HasMany(u => u.UserTrades)
-            .WithOne(t => t.User)
-            .HasForeignKey(t => t.UserId);
+        modelBuilder.Entity<UserTrade>()
+            .HasKey(ut => new { ut.UserId, ut.TradeId });
 
-        modelBuilder.Entity<Trade>()
-            .HasMany(u => u.UserTrades)
-            .WithOne(t => t.Trade)
-            .HasForeignKey(t => t.TradeId);
+        modelBuilder.Entity<UserTrade>()
+            .HasOne(ut => ut.User)
+            .WithMany(u => u.UserTrades)
+            .HasForeignKey(ut => ut.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-        modelBuilder.Entity<User>()
-            .HasMany(u => u.UserMeetings)
-            .WithOne(m => m.User)
-            .HasForeignKey(u => u.UserId);
+        modelBuilder.Entity<UserTrade>()
+            .HasOne(ut => ut.Trade)
+            .WithMany(t => t.UserTrades)
+            .HasForeignKey(ut => ut.TradeId)
+            .OnDelete(DeleteBehavior.Restrict);
 
-        modelBuilder.Entity<Meeting>()
-            .HasMany(u => u.UserMeetings)
-            .WithOne(m => m.Meeting)
-            .HasForeignKey(u => u.MeetingId);
+        modelBuilder.Entity<UserMeeting>()
+            .HasKey(um => new { um.UserId, um.MeetingId });
+
+        modelBuilder.Entity<UserMeeting>()
+            .HasOne(ut => ut.User)
+            .WithMany(u => u.UserMeetings)
+            .HasForeignKey(ut => ut.UserId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        modelBuilder.Entity<UserMeeting>()
+            .HasOne(ut => ut.Meeting)
+            .WithMany(t => t.UserMeetings)
+            .HasForeignKey(ut => ut.MeetingId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
