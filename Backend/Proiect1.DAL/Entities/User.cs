@@ -8,7 +8,6 @@ public class User : IdentityUser<int>
 {
     public string RefreshToken { get; set; }
     public virtual ICollection<UserRole> UserRoles { get; set; }
-
-    public virtual ICollection<Trade> Trades { get; set; }
     public virtual ICollection<UserMeeting> UserMeetings { get; set; }
+    public virtual ICollection<UserTrade> UserTrades { get; set; }
 }

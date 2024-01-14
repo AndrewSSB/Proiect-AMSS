@@ -20,6 +20,7 @@ public class AppDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim
     public DbSet<Meeting> Meetings { get; set; }
     public DbSet<Agenda> Agendas { get; set; }
     public DbSet<UserMeeting> UserMeetings { get; set; }
+    public DbSet<UserTrade> UserTrades { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,9 +38,14 @@ public class AppDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim
             .HasForeignKey<Meeting>(t => t.MeetingId);
 
         modelBuilder.Entity<User>()
-            .HasMany(u => u.Trades)
+            .HasMany(u => u.UserTrades)
             .WithOne(t => t.User)
             .HasForeignKey(t => t.UserId);
+
+        modelBuilder.Entity<Trade>()
+            .HasMany(u => u.UserTrades)
+            .WithOne(t => t.Trade)
+            .HasForeignKey(t => t.TradeId);
 
         modelBuilder.Entity<User>()
             .HasMany(u => u.UserMeetings)
