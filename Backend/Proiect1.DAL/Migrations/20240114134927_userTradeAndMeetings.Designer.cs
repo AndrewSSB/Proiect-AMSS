@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect1.DAL;
 
 namespace Proiect1.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240114134927_userTradeAndMeetings")]
+    partial class userTradeAndMeetings
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -263,26 +265,13 @@ namespace Proiect1.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("MeetingId")
+                    b.Property<int>("MeetingId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("acceptedUser1")
-                        .HasColumnType("bit");
-
-                    b.Property<bool>("acceptedUser2")
-                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MeetingId")
-                        .IsUnique()
-                        .HasFilter("[MeetingId] IS NOT NULL");
+                        .IsUnique();
 
                     b.ToTable("Agendas");
                 });
@@ -294,15 +283,6 @@ namespace Proiect1.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("FeedbackText")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nickname")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Feedbacks");
@@ -313,10 +293,10 @@ namespace Proiect1.Infrastructure.Migrations
                     b.Property<int>("MeetingId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AgendaId")
+                    b.Property<int>("AgendaId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TradeId")
+                    b.Property<int>("TradeId")
                         .HasColumnType("int");
 
                     b.HasKey("MeetingId");
@@ -331,10 +311,10 @@ namespace Proiect1.Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("MeetingId")
+                    b.Property<int>("MeetingId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.Property<bool>("acceptedUser1")
@@ -352,10 +332,10 @@ namespace Proiect1.Infrastructure.Migrations
 
             modelBuilder.Entity("Proiect1.Infrastructure.Entities.UserMeeting", b =>
                 {
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("MeetingId")
+                    b.Property<int>("MeetingId")
                         .HasColumnType("int");
 
                     b.HasKey("UserId", "MeetingId");
@@ -367,10 +347,10 @@ namespace Proiect1.Infrastructure.Migrations
 
             modelBuilder.Entity("Proiect1.Infrastructure.Entities.UserTrade", b =>
                 {
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TradeId")
+                    b.Property<int>("TradeId")
                         .HasColumnType("int");
 
                     b.HasKey("UserId", "TradeId");
@@ -447,7 +427,9 @@ namespace Proiect1.Infrastructure.Migrations
                 {
                     b.HasOne("Proiect1.Infrastructure.Entities.Meeting", "Meeting")
                         .WithOne("Agenda")
-                        .HasForeignKey("Proiect1.Infrastructure.Entities.Agenda", "MeetingId");
+                        .HasForeignKey("Proiect1.Infrastructure.Entities.Agenda", "MeetingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Meeting");
                 });
@@ -467,7 +449,9 @@ namespace Proiect1.Infrastructure.Migrations
                 {
                     b.HasOne("Proiect1.DAL.Entities.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("User");
                 });

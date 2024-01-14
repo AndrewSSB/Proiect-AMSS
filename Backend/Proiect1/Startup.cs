@@ -13,6 +13,10 @@ using Proiect1.BLL.Helpers;
 using Proiect1.BLL.Repositories;
 using System.Threading.Tasks;
 using Proiect1.Services.Interfaces;
+using Proiect1.Services.Interfaces.Meet.Manager;
+using Proiect1.Services.Interfaces.Meet.Repo;
+using Proiect1.Services.Managers.Meet;
+using Proiect1.Services.Repositories.Meet;
 
 namespace Proiect1;
 
@@ -52,6 +56,12 @@ public class Startup
 
         services.AddTransient<IBookRepository, BookRepository>();
         services.AddTransient<IBookManager, BookManager>();
+
+        services.AddTransient<IAgendaRepository, AgendaRepository>();
+        services.AddTransient<IAgendaManager, AgendaManager>();
+
+        services.AddTransient<IFeedbackRepository, FeedbackRepository>();
+        services.AddTransient<IFeedbackManager, FeedbackManager>();
 
         services.AddSwagger();
 
