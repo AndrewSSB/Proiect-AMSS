@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proiect1.Infrastructure.Entities
+namespace Proiect1.Services.DTOs.Meet
 {
-    public class Feedback
+    public class FeedbackDTO
     {
-        public int Id { get; set; }
         public string Nickname { get; set; }
         public int Rating { get; set; }
         public string FeedbackText { get; set; }

@@ -60,6 +60,9 @@ public class Startup
         services.AddTransient<IAgendaRepository, AgendaRepository>();
         services.AddTransient<IAgendaManager, AgendaManager>();
 
+        services.AddTransient<IFeedbackRepository, FeedbackRepository>();
+        services.AddTransient<IFeedbackManager, FeedbackManager>();
+
         services.AddSwagger();
 
         services.AddIdentity<User, Role>()

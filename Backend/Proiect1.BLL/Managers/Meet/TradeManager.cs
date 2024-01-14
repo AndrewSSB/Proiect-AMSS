@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proiect1.Services.Managers
+namespace Proiect1.Services.Managers.Meet
 {
     public class TradeManager : ITradeManager
     {
