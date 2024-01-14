@@ -10,8 +10,14 @@ namespace Proiect1.Services.Interfaces.Meet.Repo
     public interface ITradeRepository
     {
         public Trade CreateTrade(Trade trade);
-        public Trade UpdateTrade(Trade trade, Trade newTrad);
+        public Trade CreateTradeByUser(Trade trade, int userIdFrom, int userIdTo);
+        public Trade CreateTradeByUser( int userIdFrom, int userIdTo);
+        public List<Trade> GetTradesByUser(int userId);
+        public List<Trade> GetTradesForUser(int userId);
         public List<Trade> GetAll();
+        public Trade AcceptTrade(int tradeId);
         public Trade DeleteTrade(Trade trade);
+        public Trade GetTradeById(int id);
+        public Trade ResetTrade(Trade trade);
     }
 }

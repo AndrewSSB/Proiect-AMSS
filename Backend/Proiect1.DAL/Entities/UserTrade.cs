@@ -9,8 +9,10 @@ namespace Proiect1.Infrastructure.Entities
 {
     public class UserTrade
     {
-        public User? User { get; set; }
-        public int? UserId { get; set; }
+        public User? UserBy { get; set; }
+        public int? UserById { get; set; }
+        public User? UserFor { get; set; }
+        public int? UserForId { get; set; }
         public Trade? Trade { get; set; }
         public int? TradeId { get; set;}
     }

@@ -63,6 +63,11 @@ public class Startup
         services.AddTransient<IFeedbackRepository, FeedbackRepository>();
         services.AddTransient<IFeedbackManager, FeedbackManager>();
 
+        services.AddTransient<ITradeRepository, TradeRepository>();
+        services.AddTransient<ITradeManager, TradeManager>();
+
+        services.AddTransient<IMeetingRepository, MeetingRepository>();
+
         services.AddSwagger();
 
         services.AddIdentity<User, Role>()
