@@ -17,6 +17,8 @@ using Proiect1.Services.Interfaces.Meet.Manager;
 using Proiect1.Services.Interfaces.Meet.Repo;
 using Proiect1.Services.Managers.Meet;
 using Proiect1.Services.Repositories.Meet;
+using Proiect1.Services.Managers;
+using Proiect1.Services.Repositories;
 
 namespace Proiect1;
 
@@ -65,6 +67,9 @@ public class Startup
 
         services.AddTransient<ITradeRepository, TradeRepository>();
         services.AddTransient<ITradeManager, TradeManager>();
+
+        services.AddTransient<IPostRepository, PostRepository>();
+        services.AddTransient<IPostManager, PostManager>();
 
         services.AddTransient<IMeetingRepository, MeetingRepository>();
 
