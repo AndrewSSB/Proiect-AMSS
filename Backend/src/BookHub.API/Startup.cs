@@ -37,10 +37,13 @@ public class Startup
 
         services.AddCors(options =>
         {
-            options.AddPolicy(name: SpecificOrigins,
-                              builder =>
+            options.AddPolicy(SpecificOrigins,
+                              policy =>
                               {
-                                  builder.WithOrigins("localhost:3000", "http://localhost:3000").AllowAnyMethod().AllowAnyHeader();
+                                  policy
+                                    .WithOrigins("http://localhost:3000", "https://localhost:3000")
+                                    .AllowAnyMethod()
+                                    .AllowAnyHeader();
                               });
         });
 
@@ -89,13 +92,18 @@ public class Startup
         });
     }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, InitialSeed initialSeed)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, InitialSeed initialSeed)
     {
         if (env.IsDevelopment())
         { 
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proiect1 v1"));
+            app.UseSwaggerUI(c => 
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Proiect1 v1");
+                    c.RoutePrefix = string.Empty;
+                }
+            );
         }
 
         app.UseHttpsRedirection();
@@ -116,6 +124,9 @@ public class Startup
         });
 
         initialSeed.CreateRoles();
-        initialSeed.CreateUsers();
+        Task.Run(async () =>
+        {
+            await initialSeed.CreateUsers();
+        }).Wait();
     }
 }

@@ -51,7 +51,7 @@ namespace BookHub.Api.Controllers.Meet
             return Ok(trades);
         }
 
-        //[HttpDelete("delete/{tradeId}")]
+        [HttpDelete("delete/{tradeId}")]
         public async Task<IActionResult> DeleteTrade([FromRoute] int tradeId)
         {
             var trade = manager.DeleteTrade(tradeId);
