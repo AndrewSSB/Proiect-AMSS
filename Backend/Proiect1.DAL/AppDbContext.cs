@@ -22,6 +22,7 @@ public class AppDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim
     public DbSet<UserMeeting> UserMeetings { get; set; }
     public DbSet<UserTrade> UserTrades { get; set; }
     public DbSet<Post> Posts { get; set; }
+    public DbSet<Friendship> Friendships { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

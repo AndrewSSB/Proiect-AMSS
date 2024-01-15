@@ -12,5 +12,5 @@ public class User : IdentityUser<int>
     public virtual ICollection<UserTrade> UserByTrades { get; set; }
     public virtual ICollection<UserTrade> UserForTrades { get; set; }
     public virtual ICollection<Post> Posts { get; set; }
-
+    public virtual ICollection<Friendship> Friendships { get; set; }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect1.DAL;
 
 namespace Proiect1.Infrastructure.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240115180832_CreateFriendshipsTable")]
+    partial class CreateFriendshipsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -146,8 +148,6 @@ namespace Proiect1.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Friendships");
                 });
@@ -475,15 +475,6 @@ namespace Proiect1.Infrastructure.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Proiect1.DAL.Entities.Friendship", b =>
-                {
-                    b.HasOne("Proiect1.DAL.Entities.User", null)
-                        .WithMany("Friendships")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Proiect1.DAL.Entities.UserRole", b =>
                 {
                     b.HasOne("Proiect1.DAL.Entities.Role", null)
@@ -610,8 +601,6 @@ namespace Proiect1.Infrastructure.Migrations
 
             modelBuilder.Entity("Proiect1.DAL.Entities.User", b =>
                 {
-                    b.Navigation("Friendships");
-
                     b.Navigation("Posts");
 
                     b.Navigation("UserByTrades");

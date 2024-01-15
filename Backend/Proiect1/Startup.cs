@@ -71,6 +71,9 @@ public class Startup
         services.AddTransient<IPostRepository, PostRepository>();
         services.AddTransient<IPostManager, PostManager>();
 
+        services.AddTransient<IFriendshipRepository, FriendshipRepository>();
+        services.AddTransient<IFriendshipManager, FriendshipManager>();
+
         services.AddTransient<IMeetingRepository, MeetingRepository>();
 
         services.AddSwagger();
