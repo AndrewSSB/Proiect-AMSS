@@ -112,5 +112,7 @@ public class Startup
             endpoints.MapControllers();
         });
 
+        initialSeed.CreateRoles();
+        initialSeed.CreateUsers();
     }
 }

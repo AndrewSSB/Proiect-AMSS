@@ -76,12 +76,12 @@ public class AuthManager : IAuthManager
         if (result.Succeeded)
         {
             await _userManager.AddToRoleAsync(user, registerModel.Role);
-            var receiver = new EmailReceiverDTO
-            {
-                Email = registerModel.Email,
-                Name = registerModel.Name
-            };
-            await _manager.SendEmailTemplate(receiver);
+            //var receiver = new EmailReceiverDTO
+            //{
+            //    Email = registerModel.Email,
+            //    Name = registerModel.Name
+            //};
+            //await _manager.SendEmailTemplate(receiver);
             return true;
         }
         else
