@@ -28,6 +28,10 @@ public class AppDbContext : IdentityDbContext<User, Role, int, IdentityUserClaim
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.Entity<User>()
+           .HasMany(u => u.Posts)
+           .WithOne(p => p.User);
+
         modelBuilder.Entity<Meeting>()
             .HasOne(m => m.Agenda)
             .WithOne(a => a.Meeting)
