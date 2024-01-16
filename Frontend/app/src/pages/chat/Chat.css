@@ -1,0 +1,51 @@
+.chat-container {
+  display: flex;
+  margin: 0 auto;
+  height: 90vh;
+}
+
+.user-list {
+  width: 400px;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  margin-left: 50px;
+}
+
+.user-list h2 {
+  margin-bottom: 10px;
+}
+
+.user-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.user-list li {
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.user-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.chat-component {
+  flex-grow: 1;
+  padding: 20px;
+}
+
+.chat-header {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.sent {
+  margin-right: 20px;
+  display: flex;
+  justify-content: end;
+}
+
+.received {
+}

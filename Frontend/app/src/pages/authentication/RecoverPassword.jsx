@@ -6,7 +6,6 @@ export const RecoverPassword = (props) => {
   const [email, setEmail] = useState("");
   const [newPass, setNewPass] = useState("");
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);
@@ -39,7 +38,11 @@ export const RecoverPassword = (props) => {
           name="password"
         />
 
-        <button className="login-btn" onClick={() => history("/")} type="submit">
+        <button
+          className="login-btn"
+          onClick={() => history("/")}
+          type="submit"
+        >
           <b>Done</b>
         </button>
       </form>

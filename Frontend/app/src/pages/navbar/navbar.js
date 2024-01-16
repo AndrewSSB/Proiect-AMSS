@@ -1,6 +1,6 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import navStyles from "./navbar.module.css";
-import {getToken,deleteToken } from "../../utils/storage"
+import { getToken, deleteToken } from "../../utils/storage";
 import { jwtDecode } from "jwt-decode";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,16 +8,16 @@ import { useNavigate } from "react-router-dom";
 export default function Navbar() {
   const history = useNavigate();
   const [token, setToken] = useState(() => {
-    return jwtDecode(getToken("token"))
+    return jwtDecode(getToken("token"));
   });
   const handleLogOut = () => {
     deleteToken();
     history("/");
-  }
+  };
   function CustomLink({ to, children, ...props }) {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
-    
+
     return (
       <li className={isActive ? "active" : ""}>
         <Link to={to} {...props}>
@@ -28,18 +28,37 @@ export default function Navbar() {
   }
 
   return (
-    <div style={{ backgroundColor: "#f1f4f9", color: "#f1f4f9" }}>
+    <div
+      style={{
+        backgroundColor: "#f1f4f9",
+        color: "#f1f4f9",
+        marginRight: "8px",
+      }}
+    >
       <nav className={navStyles.navbar}>
         <div className={navStyles.title}>
-          <button id="logout-button" className={navStyles.buttonn} onClick={handleLogOut}>Logout</button>
+          <button
+            id="logout-button"
+            className={navStyles.buttonn}
+            onClick={handleLogOut}
+          >
+            Logout
+          </button>
         </div>
-        <div >
+        <div>
           <h1>Meet&Read</h1>
         </div>
         <div className={navStyles.navbarlinks}>
           <ul>
             <li>
-              <CustomLink to="/Home" id="home-tab">Home</CustomLink>
+              <CustomLink to="/Chat" id="chat-tab">
+                Chat
+              </CustomLink>
+            </li>
+            <li>
+              <CustomLink to="/Home" id="home-tab">
+                Home
+              </CustomLink>
             </li>
 
             {/* <li>
@@ -49,9 +68,13 @@ export default function Navbar() {
             <li>
               <CustomLink to="/Profile" id="profile-tab">Profile</CustomLink>
             </li> */}
-            {token?.role=='Admin' ? <li>
-              <CustomLink to="/AdminPage" id="admin-page-tab">AdminPage</CustomLink>
-            </li> : null} 
+            {token?.role == "Admin" ? (
+              <li>
+                <CustomLink to="/AdminPage" id="admin-page-tab">
+                  Admin Page
+                </CustomLink>
+              </li>
+            ) : null}
           </ul>
         </div>
       </nav>
